@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# CSCI4300 Web Programming Final Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Liam Fennell, Matthew Jue, Wasay Syed, Nathan Castro
 
-## Available Scripts
+Objective:
+Work in groups to design and build a full stack CRUD  (create, read, update and delete) application.  Work with your group to come up with a problem to solve and design the application to solve it.  Consider a unique way to search, sort or filter the subject components.  
 
-In the project directory, you can run:
 
-### `npm start`
+Your implementation should include the following design/implementation elements:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Implementation:
+Frontend:
+single-page app (SPA) design
+UI design mockup in Figma
+React function components 
+use of React state to update UI based on change in data.  
+components styled using CSS
+components identifiable by file name
+reusable component design that follows separation of concerns 
+implementation (components encapsulate logic,  HTML and CSS)
+incorporate form components to add and update elements and users
+** subject components include:
+title
+image (urls are sufficient; upload and storage of images is not required)
+other descriptive data based on subject (ie description, price, …)
+implement user accounts
+user components that include login credentials
+incorporate form components to add users - signup
+establish authentication sessions so that only authenticated users can perform add, update and delete of subject components.
+unauthenticated users may view
+implement conditional elements in UI so that only logged in users have the option to logout and unauthenticated users have the option to login/signup.  
+passwords must not be stored in plain text
+implement client-side routing to provide direct links to specific views of the application 
+implement asynchronous methods on all database requests
+** subject components refers to the subject matter of your project. ie. if you are providing an application that categorizes books then book is the subject component. 
 
-### `npm test`
+(Sample design with a header and 3 subject components.)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Backend:
+use MongoDB to persist data.  MongoDB Atlas cloud implementation is suggested.
+use of models to represent database elements
+establish endpoints for each of the CRUD and user account operations 
+appropriate error messages for invalid client-side routes, invalid login credentials  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Submission Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+video demonstration of all implemented functionality.  The video should be a comprehensive demonstration of all required functionality plus any additional design/functional elements. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+design document 
+cover page listing group members and class section, 
+UI design mockup 
+list of custom components
+description of database models
+diagram of implemented routes (client side to server endpoints)
+narrative of accomplishments, challenges, obstacles overcome, and any future direction with the project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+source code - zipped project source code
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Project Milestones
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+User Interface design - a color diagram detailing the planned design for the app.  Create the design in Figma.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+Functioning User Interface.  Working front end only.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+Group member contribution and participation survey.  Every student will fill out and submit a survey rating the participation and contribution of group members.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Submit project zip, design document and video demonstration of all functional components and achieved objectives of the assignment.  All required functionality must be demonstrated in the demo video to receive credit. 
+
+
+Class Demonstration - all group members must be present and participate
