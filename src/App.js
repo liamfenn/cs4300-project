@@ -3,7 +3,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import ReservationItem from './components/ReservationItem';
 import FilterBtn from './components/FilterBtn';
-import DisplayGrid from './components/DisplayGrid'
+import DisplayGrid from './components/DisplayGrid';
+import Login from './components/Login';
 
 const restaurantList = [
 {
