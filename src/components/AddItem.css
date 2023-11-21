@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.label-input {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+}
+#submitBtn {
+    margin-top: 20px;
+}

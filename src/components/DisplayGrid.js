@@ -9,7 +9,8 @@ export default function DisplayGrid ({items}) {
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gridTemplateRows: 'repeat(10, auto)',
-        gap: '10px'
+        gap: '20px',
+        justifyItems: 'center'
       }}>
       {items.map(item => (
         <ReservationItem restaurantInfo={item} />
