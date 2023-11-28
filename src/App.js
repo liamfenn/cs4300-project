@@ -19,7 +19,7 @@ const restaurantList = [
 },
 {
   name: "Sample Restaurant2",
-  image: "Image",
+  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/640px-Restaurant_N%C3%A4sinneula.jpg",
   time: "3:00 PM",
   citystate: "Orlando/FL",
   date: "10/14",

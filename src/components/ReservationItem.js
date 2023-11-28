@@ -5,7 +5,7 @@ import restaurant from '../assets/images/restaurant.jpeg';
 const ReservationItem = ( {restaurantInfo }) => {
   return (
     <div className="card">
-        <img src={restaurant} height={"65%"} />
+        <img src={restaurantInfo.image} alt="Restaurant" height={"65%"} />
         <div className="card-body">
             <div className="body-heading">
                 <div className="left-heading">
