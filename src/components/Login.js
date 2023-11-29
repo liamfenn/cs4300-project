@@ -1,17 +1,34 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
+import UserContext from '../context/UserContext';
+import axios from 'axios';
 
 const Login = ({ onLogin }) => {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const loginResponse = await axios.post('/api/users/login', {
+        email,
+        password,
+      });
+      setUserData({
+        token: loginResponse.data.token,
+        user: loginResponse.data.user,
+      });
+      localStorage.setItem('auth-token', loginResponse.data.token);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
     onLogin();
     navigate('/');
-  };
+ // };
 
 //     try {
 //         const response = await fetch(loginEndpoint, {

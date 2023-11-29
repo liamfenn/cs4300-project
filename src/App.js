@@ -7,6 +7,9 @@ import FilterBtn from './components/FilterBtn';
 import DisplayGrid from './components/DisplayGrid';
 import Login from './components/Login';
 import AddItem from './components/AddItem';
+const users = require('./routes/api/users');
+App.use('/api/users', users);
+import UserContext from './components/context/UserContext';
 
 const restaurantList = [
 {
