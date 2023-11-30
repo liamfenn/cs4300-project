@@ -1,0 +1,17 @@
+#email, #password {
+    border-radius: 4px;
+    height: 30px;
+    width: 250px;
+    text-align: center;
+    background: #495083;
+    border: none;
+    border-color: #495083;
+    color: #FFFFFF;
+    margin-top: 20px;
+  }
+  #submitBtn {
+    color: #FFFFFF;
+    height: 50px;
+    width: 250px;
+    font-size: 14px;
+  }

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import axios from 'axios'; 
+import './Signup.css';
 
 const Signup = () => {
   console.log("opened")
@@ -36,34 +37,38 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Signup</h2>
+    <div className="card">
+      <h1 id="signup-head">Signup</h1>
       <form onSubmit={handleSubmit}>
         <input
+          id="email"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          id="email"
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+          id="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
+          id="password"
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button id="submitBtn" type="submit">Submit</button>
       </form>
     </div>
   );
