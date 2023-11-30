@@ -2,12 +2,27 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    width: 450px;
+    height: 550px;
 }
 .label-input {
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Add this line */
+    gap: 8px;
     align-items: baseline;
+    margin-bottom: 20px;
 }
 #submitBtn {
     margin-top: 20px;
+}
+.label-input input {
+    align-items: flex-end;
+}
+#rname {
+    margin-top: 30px;
+}
+#name, #image, #time, #citystate, #date, #guests {
+    background: #495083;
+    border: none;
+    border-color: #495083;
 }

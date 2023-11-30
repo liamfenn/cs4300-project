@@ -9,48 +9,36 @@ import AddItem from './components/AddItem';
 
 const restaurantList = [
 {
-    id: 0,
     name: "Sample Restaurant1",
     image: "Image",
     time: "1:00 PM",
     citystate: "Atlanta/GA",
     date: "11/20",
     guests: "3",
-    highestBid: 0,
-    canEdit: false,
 },
 {
-  id: 1,
   name: "Sample Restaurant2",
   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/640px-Restaurant_N%C3%A4sinneula.jpg",
   time: "3:00 PM",
   citystate: "Orlando/FL",
   date: "10/14",
   guests: "2",
-  highestBid: 0,
-  canEdit: false,
 },
 {
-  id: 2,
   name: "Sample Restaurant3",
   image: "Image",
   time: "11:00 AM",
   citystate: "Athens/GA",
   date: "11/28",
   guests: "6",
-  highestBid: 0,
-  canEdit: false,
 },
 {
-  id: 3,
   name: "Sample Restaurant4",
   image: "Image",
   time: "6:00 PM",
   citystate: "Charlotte/NC",
   date: "11/20",
   guests: "3",
-  highestBid: 0,
-  canEdit: false,
 },
 ]
 
@@ -71,10 +59,6 @@ function App() {
     setReservations(prevReservations => [...prevReservations, newReservation]);
   };
 
-  const deleteItem = (id) => {
-    setReservations(reservations.filter(item => item.id !== id));
-  };
-
   return (
     <Router>
       <Navbar isLoggedIn={isLoggedIn} onLogoutClick={handleLogout} />
@@ -84,7 +68,7 @@ function App() {
         <Route path="/" element={
           <>
             <FilterBtn/>
-            <DisplayGrid items={reservations} deleteFunction={deleteItem}/>
+            <DisplayGrid items={reservations}/>
           </>
         }/>
       </Routes>

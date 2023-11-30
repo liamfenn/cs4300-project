@@ -41,7 +41,7 @@ const AddItem = (props) => {
       <div className="input" class="card">
         <form onSubmit={addItemHandler}>
           <div class="label-input">
-            <label><h2>Restaurant Name</h2></label>
+            <label id="rname"><h2>Restaurant Name</h2></label>
             <input
               id="name"
               type="text"
