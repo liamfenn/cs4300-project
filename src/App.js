@@ -20,12 +20,15 @@ const restaurantList = [
     canEdit: false,
 },
 {
-  name: "Sample Restaurant2",
-  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/640px-Restaurant_N%C3%A4sinneula.jpg",
-  time: "3:00 PM",
-  citystate: "Orlando/FL",
-  date: "10/14",
+  id: 1,
+  name: "Aria",
+  image: "https://lh3.googleusercontent.com/p/AF1QipNatxkfUBl5eCjDvBHKIEq3z04ILay6MpT9YlPE=s1360-w1360-h1020",
+  time: "5:00 PM",
+  citystate: "Atlanta/GA",
+  date: "10/15",
   guests: "2",
+  highestBid: 0,
+  canEdit: false,
 },
 {
   id: 2,
@@ -88,6 +91,10 @@ function App() {
 
   const addReservation = (newReservation) => {
     setReservations(prevReservations => [...prevReservations, newReservation]);
+  };
+
+  const deleteItem = (id) => {
+    setReservations(reservations.filter(item => item.id !== id));
   };
 
   return (
