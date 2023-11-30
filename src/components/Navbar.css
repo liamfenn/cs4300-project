@@ -1,8 +1,12 @@
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 70dvw;
-    margin-bottom: 100px;
+    background-color: #495083;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 button {
     width: 172px;
@@ -30,4 +34,7 @@ button {
     nav {
         gap: 60dvw;
     }
+}
+#logo {
+    font-size: 30px;
 }

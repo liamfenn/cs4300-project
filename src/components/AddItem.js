@@ -39,6 +39,7 @@ const AddItem = (props) => {
   
     return (
       <div className="input" class="card">
+        <h1 id="lg">Post a New Listing</h1>
         <form onSubmit={addItemHandler}>
           <div class="label-input">
             <label id="rname"><h2>Restaurant Name</h2></label>

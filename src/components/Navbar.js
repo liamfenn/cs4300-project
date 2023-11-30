@@ -9,7 +9,7 @@ const Navbar = ({ isLoggedIn, onLogoutClick }) => {
 
   return (
     <nav>
-      <h1>ReservEats</h1>
+      <h1 id="logo">ReservEats</h1>
       {isLoggedIn ? (
         <div class="new-nav">
           <button type="submit" class="newBtn" onClick={() => navigate('/add-item')}>Post Reservation</button>

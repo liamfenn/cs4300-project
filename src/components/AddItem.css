@@ -3,7 +3,8 @@
     flex-direction: column;
     margin: 0 auto;
     width: 450px;
-    height: 550px;
+    height: 600px;
+    padding: 20px;
 }
 .label-input {
     display: flex;
@@ -22,7 +23,16 @@
     margin-top: 30px;
 }
 #name, #image, #time, #citystate, #date, #guests {
+    border-radius: 4px;
+    height: 20px;
+    width: 150px;
+    text-align: center;
+    padding-bottom: 5px;
     background: #495083;
     border: none;
     border-color: #495083;
+    color: #FFFFFF;
+}
+#lg {
+    font-size: 30px;
 }

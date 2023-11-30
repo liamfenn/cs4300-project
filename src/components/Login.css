@@ -1,62 +1,28 @@
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-form {
-    padding: 40px;
-    background: #252839; 
-    border-radius: 10px;
-    color: white;
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  .login-form h1,
-  .login-form p,
-  .login-form div,
-  .login-form .login-footer,
-  .login-form .continue-as-guest {
-    margin-bottom: 15px;
-  }
-  
-  .login-form input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    background: none;
-    border: 1px solid #4e4e50;
-    border-radius: 5px;
-    color: white;
-  }
-  
-  .login-form button {
-    width: 100%;
-    padding: 10px;
-    background: #0f3460;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .login-footer,
-  .continue-as-guest {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .login-footer a,
-  .continue-as-guest a {
-    color: #4e8df5;
-    text-decoration: none;
-  }
-  
-  .login-footer a:hover,
-  .continue-as-guest a:hover {
-    text-decoration: underline;
-  }
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 450px;
+  height: 600px;
+  padding: 20px;
+  justify-content: center;
+  text-align: center;
+}
+#email, #password {
+  border-radius: 4px;
+  height: 20px;
+  width: 150px;
+  text-align: center;
+  padding-bottom: 5px;
+  background: #495083;
+  border: none;
+  border-color: #495083;
+  color: #FFFFFF;
+}
+.input {
+  margin-top: 20px;
+}
+input {
+  width: 300px;
+}
   

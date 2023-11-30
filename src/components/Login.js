@@ -44,12 +44,13 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="login-container">
+    <div className="card">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <p>Enter account details below</p>
-        <div>
+        <h1 id="lg">Login</h1>
+        <h3>Enter account details below</h3>
+        <div class="input">
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -57,8 +58,9 @@ const Login = ({ setIsLoggedIn }) => {
             required
           />
         </div>
-        <div>
+        <div class="input">
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
