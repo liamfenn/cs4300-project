@@ -16,7 +16,7 @@ const ReservationItem = ( {restaurantInfo, deleteFunction }) => {
   const [restaurantGuests, setRestaurantGuests] = useState(restaurantInfo.guests)
   const restaurantID = restaurantInfo.id
 
-  console.log(restaurantInfo.citystate)
+
   const handleOpenModal = () => {
     setShowModal(true);
   };
