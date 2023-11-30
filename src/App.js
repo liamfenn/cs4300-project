@@ -6,7 +6,7 @@ import FilterBtn from './components/FilterBtn';
 import DisplayGrid from './components/DisplayGrid';
 import Login from './components/Login';
 import AddItem from './components/AddItem';
-
+import Signup from "./components/Signup"
 const restaurantList = [
 {
     id: 0,
@@ -103,6 +103,7 @@ function App() {
       <Routes>
         <Route path="/add-item" element={<AddItem onAddReservation={addReservation} />} />
         <Route path="/login" element={<Login onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/" element={
           <>
             <DisplayGrid items={reservations} deleteFunction={deleteItem}/>
