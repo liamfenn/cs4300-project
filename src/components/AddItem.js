@@ -15,7 +15,7 @@ const AddItem = (props) => {
     const addItemHandler = (event) => {
       event.preventDefault();
       
-      const randomNum = Math.floor(Math.random() * 1000) + 1;
+      const randomNum = Math.floor(Math.random() * 10000) + 1;
       const item = {
         id: randomNum,
         name: enteredName,
@@ -23,7 +23,9 @@ const AddItem = (props) => {
         time: enteredTime,
         citystate: enteredCitystate,
         date: enteredDate,
-        guests: enteredGuests
+        guests: enteredGuests,
+        highestBid: 0,
+        canEdit: true,
       };
   
       props.onAddReservation(item);
