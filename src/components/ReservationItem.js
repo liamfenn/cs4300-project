@@ -9,13 +9,14 @@ const ReservationItem = ( {restaurantInfo, deleteFunction }) => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [highestBid, setHighestBid] = useState(restaurantInfo.highestBid)
   const [restaurantName, setRestaurantName] = useState(restaurantInfo.name)
-  const [restaurantCityState, setRestaurantCityState] = useState(restaurantInfo.cityState)
+  const [restaurantCityState, setRestaurantCityState] = useState(restaurantInfo.citystate)
   const [restaurantTime, setRestaurantTime] = useState(restaurantInfo.time)
   const [restaurantDate, setRestaurantDate] = useState(restaurantInfo.date)
   const [restaurantImage, setRestaurantImage] = useState(restaurantInfo.image)
   const [restaurantGuests, setRestaurantGuests] = useState(restaurantInfo.guests)
-  const [restaurantID, setRestaurantID] = useState(restaurantInfo.id)
+  const restaurantID = restaurantInfo.id
 
+  console.log(restaurantInfo.citystate)
   const handleOpenModal = () => {
     setShowModal(true);
   };

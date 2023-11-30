@@ -9,12 +9,15 @@ import AddItem from './components/AddItem';
 
 const restaurantList = [
 {
-    name: "Sample Restaurant1",
-    image: "Image",
-    time: "1:00 PM",
-    citystate: "Atlanta/GA",
+    id: 0,
+    name: "The National",
+    image: "https://lh3.googleusercontent.com/p/AF1QipPvYrpQlTTVbEl8JsdUeszdWTwHFKXHaRwMVvuT=s1360-w1360-h1020",
+    time: "6:00 PM",
+    citystate: "Athens/GA",
     date: "11/20",
-    guests: "3",
+    guests: "2",
+    highestBid: 0,
+    canEdit: false,
 },
 {
   name: "Sample Restaurant2",
