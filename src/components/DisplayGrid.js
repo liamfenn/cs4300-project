@@ -3,6 +3,7 @@ import ReservationItem from './ReservationItem';
 
 export default function DisplayGrid ({items, deleteFunction}) {
 
+ 
   return (
 
     <div style={{
