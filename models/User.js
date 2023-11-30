@@ -6,17 +6,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
         trim: true,
-        },
-        password: {
+    },
+    password: {
         required: true,
         type: String,
         minLength: 6,
-        },
-        username: {
-            required: true,
-            type: String,
-            trim: true,
-        }
+    },
+    username: {
+        required: true,
+        type: String,
+        trim: true,
+    }
 });
 
 module.exports = mongoose.model('user', userSchema);

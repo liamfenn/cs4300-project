@@ -1,6 +1,5 @@
 import React from 'react';
 import './ReservationItem.css';
-import restaurant from '../assets/images/restaurant.jpeg';
 
 const ReservationItem = ( {restaurantInfo }) => {
   return (

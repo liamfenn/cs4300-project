@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Navbar from './components/Navbar';
-import FilterBtn from './components/FilterBtn';
-import DisplayGrid from './components/DisplayGrid';
-import Login from './components/Login';
-import AddItem from './components/AddItem';
+import '../App.css';
+import Navbar from './Navbar';
+import FilterBtn from './FilterBtn';
+import DisplayGrid from './DisplayGrid';
+import Login from './Login';
+import AddItem from './AddItem';
 
 const restaurantList = [
 {
@@ -42,8 +42,8 @@ const restaurantList = [
 },
 ]
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function AuthenticatedView() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [reservations, setReservations] = useState(restaurantList);
 
   const handleLogin = (user) => {
@@ -64,7 +64,7 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} onLogoutClick={handleLogout} />
       <Routes>
         <Route path="/add-item" element={<AddItem onAddReservation={addReservation} />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/" element={
           <>
             <FilterBtn/>
@@ -76,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default AuthenticatedView;
