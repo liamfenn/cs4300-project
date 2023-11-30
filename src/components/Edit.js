@@ -1,44 +1,57 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AddItem.css';
+import './Bid.css'; // For styling the modal
 
-const AddItem = (props) => {
-    const [enteredName, setEnteredName] = useState('');
-    const [enteredImg, setEnteredImg] = useState('');
-    const [enteredTime, setEnteredTime] = useState('');
-    const [enteredCitystate, setEnteredCitystate] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
-    const [enteredGuests, setEnteredGuests] = useState('');
+function EditModal({ show, onClose, onSubmit, date, guests, name, time, cityState, image, deleteFunction, id }) {
 
-    const navigate = useNavigate();
-  
+    const [enteredName, setEnteredName] = useState(name);
+    const [enteredImg, setEnteredImg] = useState(image);
+    const [enteredTime, setEnteredTime] = useState(time);
+    const [enteredCitystate, setEnteredCitystate] = useState(cityState);
+    const [enteredDate, setEnteredDate] = useState(date);
+    const [enteredGuests, setEnteredGuests] = useState(guests);
+
+    const deleteItemHandler = (event) => {
+        event.preventDefault();
+        deleteFunction(id)
+    }
     const addItemHandler = (event) => {
-      event.preventDefault();
-      
-      const randomNum = Math.floor(Math.random() * 1000) + 1;
-      const item = {
-        id: randomNum,
-        name: enteredName,
-        image: enteredImg,
-        time: enteredTime,
-        citystate: enteredCitystate,
-        date: enteredDate,
-        guests: enteredGuests
+        event.preventDefault();
+    
+        const item = {
+          id: id,
+          name: enteredName,
+          image: enteredImg,
+          time: enteredTime,
+          citystate: enteredCitystate,
+          date: enteredDate,
+          guests: enteredGuests,
+          highestBid: 0,
+          canEdit: true,
+        };
+
+        onSubmit(item)
+
+        setEnteredName('');
+        setEnteredImg('');
+        setEnteredTime('');
+        setEnteredCitystate('');
+        setEnteredDate('');
+        setEnteredGuests('');
+
+        onClose();
       };
-  
-      props.onAddReservation(item);
-  
-      setEnteredName('');
-      setEnteredImg('');
-      setEnteredTime('');
-      setEnteredCitystate('');
-      setEnteredDate('');
-      setEnteredGuests('');
-      navigate('/');
-    };
-  
-    return (
-      <div className="input" class="card">
+
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <div className="modal-header">
+          <h4 className="modal-title">Place a Bid</h4>
+        </div>
+        <div className="modal-body">
         <form onSubmit={addItemHandler}>
           <div class="label-input">
             <label><h2>Restaurant Name</h2></label>
@@ -94,10 +107,16 @@ const AddItem = (props) => {
               onChange={event => setEnteredGuests(event.target.value)}
             />
           </div>
-          <button type="submit" class="newBtn" id="submitBtn">Post Reservation</button>
+          <button type="submit" class="newBtn" id="submitBtn">Edit Reservation</button>
+          <button class="newBtn" id="deleteBtn" onClick={deleteItemHandler}>Delete Reservation</button>
         </form>
+        </div>
+        <div className="modal-footer">
+          <button onClick={onClose}>Close</button>
+        </div>
       </div>
-    );
-  };
-  
-  export default AddItem;
+    </div>
+  );
+}
+
+export default EditModal;

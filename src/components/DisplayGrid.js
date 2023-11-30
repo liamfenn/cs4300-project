@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react';
 import ReservationItem from './ReservationItem';
 
-export default function DisplayGrid ({items}) {
-  
+export default function DisplayGrid ({items, deleteFunction}) {
+
   return (
 
     <div style={{
@@ -13,7 +13,7 @@ export default function DisplayGrid ({items}) {
         justifyItems: 'center'
       }}>
       {items.map(item => (
-        <ReservationItem restaurantInfo={item} />
+        <ReservationItem restaurantInfo={item} deleteFunction={deleteFunction} />
       ))}
     </div>
   )
