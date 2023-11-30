@@ -21,12 +21,12 @@ function Modal({ show, onClose, onSubmit }) {
     <div className="modal" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
-          <h4 className="modal-title">Place a Bid</h4>
+          <h1 className="modal-title">Place a Bid</h1>
         </div>
         <div className="modal-body">
         <form onSubmit={addItemHandler}>
-          <div class="label-input">
-            <label><h2>Bid Ammount</h2></label>
+          <div class="label-input2">
+            <label><h2>Bid Amount</h2></label>
             <input
               id="bid"
               type="number"
@@ -34,11 +34,11 @@ function Modal({ show, onClose, onSubmit }) {
               onChange={event => setEnteredBid(event.target.value)}
             />
           </div>
-          <button type="submit">Submit Bid</button>
+          <button id="submit-bid-Btn" type="submit">Submit Bid</button>
         </form>
         </div>
         <div className="modal-footer">
-          <button onClick={onClose}>Close</button>
+          <button id="close" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>

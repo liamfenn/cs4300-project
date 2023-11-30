@@ -68,14 +68,16 @@ const Login = ({ setIsLoggedIn }) => {
             required
           />
         </div>
-        <button type="submit">Login</button>
-        <div className="login-footer">
-          <span>Don't have an account? <a href="/signup">Sign-up</a></span>
-          <span><a href="/forgot-password">Forgot Password?</a></span>
-        </div>
-        <div className="continue-as-guest">
-          <a href="/">Continue as Guest</a>
-        </div>
+        <button id="submitBtn" type="submit">Login</button>
+          <div class="sign-up-div">
+            <h4>Don't have an account?</h4>
+            <a id="signupBtn" href="/signup">Sign-up</a>
+          </div>
+
+          <div id="guest-forgot">
+            <h4><a class="ntd" id="forgot" href="/forgot-password">Forgot Password?</a></h4>
+            <h4><a class="ntd" href="/">Continue as Guest</a></h4>
+          </div>
       </form>
     </div>
   );

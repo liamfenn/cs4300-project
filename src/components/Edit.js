@@ -49,7 +49,7 @@ function EditModal({ show, onClose, onSubmit, date, guests, name, time, cityStat
     <div className="modal" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
-          <h4 className="modal-title">Place a Bid</h4>
+          <h1 className="modal-title">Edit Listing</h1>
         </div>
         <div className="modal-body">
         <form onSubmit={addItemHandler}>
@@ -107,12 +107,12 @@ function EditModal({ show, onClose, onSubmit, date, guests, name, time, cityStat
               onChange={event => setEnteredGuests(event.target.value)}
             />
           </div>
-          <button type="submit" class="newBtn" id="submitBtn">Edit Reservation</button>
+          <button type="submit" class="newBtn" id="edit-Btn">Edit Reservation</button>
           <button class="newBtn" id="deleteBtn" onClick={deleteItemHandler}>Delete Reservation</button>
         </form>
         </div>
         <div className="modal-footer">
-          <button onClick={onClose}>Close</button>
+          <button id="close" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>
