@@ -12,7 +12,7 @@ const AddItem = (props) => {
 
     const navigate = useNavigate();
   
-    const addItemHandler = async (event) => {
+    const addItemHandler = (event) => {
       event.preventDefault();
   
       const item = {
@@ -24,24 +24,7 @@ const AddItem = (props) => {
         guests: enteredGuests
       };
   
-      try {
-        const response = await fetch('http://localhost:3001/api/items', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(item),
-        });
-
-        if (!response.ok) {
-          throw new Error('HTTP error ' + response.status);
-        }
-
-        const data = await response.json();
-        props.onAddReservation(data);
-      } catch (error) {
-        console.log(error);
-      }
+      props.onAddReservation(item);
   
       setEnteredName('');
       setEnteredImg('');
