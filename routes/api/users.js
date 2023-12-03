@@ -1,6 +1,8 @@
 const express = require("express");
 const userRouter = express.Router();
 const User = require('../../Models/User');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 // Signup Route
 userRouter.post('/signup', async (req, res) => {
@@ -15,8 +17,8 @@ userRouter.post('/signup', async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ msg: "User with the same email already exists" });
     }
-
-    const newUser = new User({ email, password, username });
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const newUser = new User({ email, password: hashedPassword, username });
 
     const savedUser = await newUser.save();
     console.log(savedUser.username); // Logging the username to the console for debugging purposes
@@ -46,8 +48,9 @@ userRouter.post('/login', async (req, res) => {
       if (!user) {
         return res.status(400).send({ msg: "User with this email does not exist" });
       }
-  
-      if (password !== user.password) {
+      
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
         return res.status(400).send({ msg: "Incorrect password." });
       }
   
