@@ -24,18 +24,18 @@ const Login = ({ setIsLoggedIn }) => {
         body: JSON.stringify({ email, password }),
       });
 
-      if (!response.ok) {
-        console.error('HTTP status:', response.status);
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Login failed'); // Set error message
-        return; // Prevent further execution
-        //throw new Error('HTTP error');
-      }
-
       const data = await response.json();
       console.log('Response:', data); // log the response data
 
+      if (!response.ok) {
+          console.error('HTTP status:', response.status);
+          window.alert(data.msg);
+          throw new Error('HTTP error');
+      }
+
       if (response.ok) {
+        // Save the token to local storage
+        localStorage.setItem('auth-token', data.token);
         setIsLoggedIn(true);
         navigate('/');
       } else {
