@@ -9,39 +9,38 @@ const Login = ({ setIsLoggedIn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted'); // log when form is submitted
-    console.log('Email:', email); // log email state
-    console.log('Password:', password); // log password state
+    setIsLoggedIn(true);
+    navigate('/');
+    // console.log('Form submitted'); // log when form is submitted
+    // console.log('Email:', email); // log email state
+    // console.log('Password:', password); // log password state
 
-    try {
-      const response = await fetch('http://localhost:3001/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+    // try {
+    //   const response = await fetch('http://localhost:3001/api/users/login', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ email, password }),
+    //   });
 
-      const data = await response.json();
-      console.log('Response:', data); // log the response data
+    //   if (!response.ok) {
+    //     console.error('HTTP status:', response.status);
+    //     throw new Error('HTTP error');
+    //   }
 
-      if (!response.ok) {
-          console.error('HTTP status:', response.status);
-          window.alert(data.msg);
-          throw new Error('HTTP error');
-      }
+    //   const data = await response.json();
+    //   console.log('Response:', data); // log the response data
 
-      if (response.ok) {
-        // Save the token to local storage
-        localStorage.setItem('auth-token', data.token);
-        setIsLoggedIn(true);
-        navigate('/');
-      } else {
-        console.error('Login failed:', data.message);
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-    }
+    //   if (response.ok) {
+    //     setIsLoggedIn(true);
+    //     navigate('/');
+    //   } else {
+    //     console.error('Login failed:', data.message);
+    //   }
+    // } catch (error) {
+    //   console.error('Fetch error:', error);
+    // }
   };
 
   return (
