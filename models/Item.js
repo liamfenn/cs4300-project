@@ -18,15 +18,15 @@ const ItemSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     guests: {
-        type: Number,
+        type: String,
         required: true
     },
     highestBid: {
-        type: Number,
+        type: String,
         required: true
     }
 })

@@ -24,6 +24,8 @@ const Login = ({ setIsLoggedIn }) => {
 
       if (!response.ok) {
         console.error('HTTP status:', response.status);
+        const data = await response.json();
+        window.alert(data.msg);
         throw new Error('HTTP error');
       }
 

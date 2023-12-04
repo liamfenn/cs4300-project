@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './AddItem.css';
 
 const AddItem = (props) => {
@@ -16,7 +17,7 @@ const AddItem = (props) => {
       e.preventDefault();
 
       try {
-        const response = await fetch('http://localhost:3001/api/items/add-item', {
+        const response = await axios.post('http://localhost:3001/api/items/add-item', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ const AddItem = (props) => {
             citystate: enteredCitystate,
             date: enteredDate,
             guests: enteredGuests,
-            highestBid: 0,
+            highestBid: "0",
           }),
         });
 
@@ -79,7 +80,7 @@ const AddItem = (props) => {
             <label><h3>Time</h3></label>
             <input
               id="time"
-              type="time"
+              type="text"
               value={enteredTime}
               onChange={event => setEnteredTime(event.target.value)}
             />
@@ -97,7 +98,7 @@ const AddItem = (props) => {
             <label><h3>Date</h3></label>
             <input
               id="date"
-              type="date"
+              type="text"
               value={enteredDate}
               onChange={event => setEnteredDate(event.target.value)}
             />
@@ -106,7 +107,7 @@ const AddItem = (props) => {
             <label><h3>Guests</h3></label>
             <input
               id="guests"
-              type="number"
+              type="text"
               value={enteredGuests}
               onChange={event => setEnteredGuests(event.target.value)}
             />
