@@ -12,7 +12,7 @@
 //     const verified = jwt.verify(token, process.env.JWT_SECRET);
 //     if (!verified) {
 //       return res.status(401).json({ msg: 'Token verification failed, authorization denied' });
-//     }a
+//     }
 
 //     // If verified, add the user's ID from the token to the request object
 //     req.user = verified.id;
