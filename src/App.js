@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import FilterBtn from './components/FilterBtn';
 import DisplayGrid from './components/DisplayGrid';
 import Login from './components/Login';
 import AddItem from './components/AddItem';
 import Signup from "./components/Signup"
+import UserContext from './components/context/UserContext';
+
 const restaurantList = [
 {
     id: 0,
@@ -77,6 +78,7 @@ const restaurantList = [
 ]
 
 function App() {
+  const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [reservations, setReservations] = useState(restaurantList);
 
@@ -98,19 +100,21 @@ function App() {
   };
 
   return (
-    <Router>
-      <Navbar isLoggedIn={isLoggedIn} onLogoutClick={handleLogout} />
-      <Routes>
-        <Route path="/add-item" element={<AddItem onAddReservation={addReservation} />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/" element={
-          <>
-            <DisplayGrid items={reservations} deleteFunction={deleteItem}/>
-          </>
-        }/>
-      </Routes>
-    </Router>
+    <UserContext.Provider value={{ userData, setUserData }}>
+      <Router>
+        <Navbar isLoggedIn={isLoggedIn} onLogoutClick={handleLogout} />
+        <Routes>
+          <Route path="/add-item" element={<AddItem onAddReservation={addReservation} />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={
+            <>
+              <DisplayGrid items={reservations} deleteFunction={deleteItem}/>
+            </>
+          }/>
+        </Routes>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
