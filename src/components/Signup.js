@@ -10,30 +10,30 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
-  // const { setUserData } = useContext(UserContext);
+  const { setUserData } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (password !== confirmPassword) {
-    //   console.error("Passwords don't match");
-    //   return;
-    // }
-    // try {
-    //   const signupResponse = await axios.post('/api/users/signup', {
-    //     email,
-    //     password,
-    //     username,
-    //   });
-    //   setUserData({
-    //     token: signupResponse.data.token,
-    //     user: signupResponse.data.user,
-    //   });
-    //   localStorage.setItem('auth-token', signupResponse.data.token);
-    //   navigate('/');
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    if (password !== confirmPassword) {
+      console.error("Passwords don't match");
+      return;
+    }
+    try {
+      const signupResponse = await axios.post('http://localhost:3001/api/users/signup', {
+        email,
+        password,
+        username,
+      });
+      setUserData({
+        token: signupResponse.data.token,
+        user: signupResponse.data.user,
+      });
+      localStorage.setItem('auth-token', signupResponse.data.token);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
