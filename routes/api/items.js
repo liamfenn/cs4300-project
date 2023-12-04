@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const Item = require('../../models/Item');
 
 router.get('/', (req, res) => {
@@ -13,10 +12,22 @@ router.get('/:id', (req, res) => {
     .then((item) => res.json(item))
     .catch((err) => res.status(404).json({noitemfound: 'No Item Found' }));
 });
-router.post('/', (req, res) => {
-    Item.create(req.body)
-    .then((item) => res.json({ msg: 'Item added successfully' }))
-    .catch((err) => res.status(400).json({ error: 'Unable to add this item' }))
+router.post('/add-item', async (req, res) => {
+    try {
+        const { name, image, time, citystate, date, guests, highestBid } = req.body;
+
+        if (!name || !image || !time || !citystate || !date || !guests || !highestBid) {
+            return res.status(400).json({ msg: "Please enter all the fields" });
+        }
+        const newItem = new Item({ name, image, time, citystate, date, guests, highestBid });
+
+        await newItem.save()
+            .then(item => res.json(item))
+            .catch(err => res.status(500).json({ error: err.message }));
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 router.put('/:id', (req, res) => {
     Item.findByIdAndUpdate(req.params.id, req.body)

@@ -1,11 +1,7 @@
 const express = require("express");
 const userRouter = express.Router();
-const User = require('../../Models/User');
-//const bcryptjs = require("bcryptjs");
+const User = require('../../models/User');
 const jwt = require("jsonwebtoken");
-const auth = require("../../middleware/auth");
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 // Signup Route
 userRouter.post('/signup', async (req, res) => {
@@ -25,21 +21,12 @@ userRouter.post('/signup', async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ msg: "User with the same email already exists" });
     }
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const newUser = new User({ email, password: hashedPassword, username });
+    const newUser = new User({ email, password, username });
 
     const savedUser = await newUser.save();
     console.log(savedUser.username); // Logging the username to the console for debugging purposes
 
-    // Create token
-    const token = jwt.sign(
-      { id: savedUser._id },
-      process.env.JWT_SECRET, // Make sure to set the JWT_SECRET in your environment variables
-      { expiresIn: 3600 }
-    );
-
     res.json({ 
-      token,
       user: {
         id: savedUser._id,
         username: savedUser.username,
@@ -65,43 +52,48 @@ userRouter.post('/login', async (req, res) => {
         return res.status(400).send({ msg: "User with this email does not exist" });
       }
       
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
+      if (password !== user.password) {
         return res.status(400).send({ msg: "Incorrect password." });
       }
 
       const token = jwt.sign(
         { id: user._id, username: user.username },
-        process.env.JWT_SECRET, // Use secret key from environment variables
-        { expiresIn: '1h' } // Token expires in 1 hour
+        process.env.JWT_SECRET,
+        { expiresIn: 3600 }
       );
 
-      res.json({ token, user: { id: user._id, username: user.username } });
+      res.json({
+        token,
+        user: {
+          id: user._id,
+          username: user.username
+        }
+      });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
 
-    //to check if token is valid 
-    userRouter.post("/tokenIsValid", async (req, res) => {
-      try {
-        const token = req.header("x-auth-token");
-        if (!token) return res.json(false);
-  
-        const verified = jwt.verify(token, process.env.JWT_SECRET);    //put jwt passcode 
-        if (!verified) return res.json(false);
-  
-        const user = await User.findById(verified.id);
-        if (!user) return res.json(false);
-  
-        return res.json(true);
-      } catch (err) {
-        res.status(500).json({ error: err.message });
-      }
-    });
+  // //to check if token is valid 
+  // userRouter.post("/tokenIsValid", async (req, res) => {
+  //   try {
+  //     const token = req.header("x-auth-token");
+  //     if (!token) return res.json(false);
+
+  //     const verified = jwt.verify(token, process.env.JWT_SECRET);    //put jwt passcode 
+  //     if (!verified) return res.json(false);
+
+  //     const user = await User.findById(verified.id);
+  //     if (!user) return res.json(false);
+
+  //     return res.json(true);
+  //   } catch (err) {
+  //     res.status(500).json({ error: err.message });
+  //   }
+  // });
 
 // To get the user's credentials
-userRouter.get("/", auth, async (req, res) => {
+userRouter.get("/", async (req, res) => {
     const user = await User.findById(req.user);
     res.json({
       username: user.username,

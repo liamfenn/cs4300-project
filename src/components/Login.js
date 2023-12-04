@@ -5,7 +5,6 @@ import './Login.css';
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // error message state 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,7 +12,6 @@ const Login = ({ setIsLoggedIn }) => {
     console.log('Form submitted'); // log when form is submitted
     console.log('Email:', email); // log email state
     console.log('Password:', password); // log password state
-    setErrorMessage(''); //clears any messages 
 
     try {
       const response = await fetch('http://localhost:3001/api/users/login', {
@@ -43,7 +41,6 @@ const Login = ({ setIsLoggedIn }) => {
       }
     } catch (error) {
       console.error('Fetch error:', error);
-      setErrorMessage(error.message || 'An error occurred');
     }
   };
 
@@ -52,7 +49,6 @@ const Login = ({ setIsLoggedIn }) => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h1 id="lg">Login</h1>
         <h3>Enter account details below</h3>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <div class="input">
           <input
             id="email"

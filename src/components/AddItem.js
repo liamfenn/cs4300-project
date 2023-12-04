@@ -12,37 +12,51 @@ const AddItem = (props) => {
 
     const navigate = useNavigate();
   
-    const addItemHandler = (event) => {
-      event.preventDefault();
-      
-      const randomNum = Math.floor(Math.random() * 10000) + 1;
-      const item = {
-        id: randomNum,
-        name: enteredName,
-        image: enteredImg,
-        time: enteredTime,
-        citystate: enteredCitystate,
-        date: enteredDate,
-        guests: enteredGuests,
-        highestBid: 0,
-        canEdit: true,
-      };
-  
-      props.onAddReservation(item);
-  
-      setEnteredName('');
-      setEnteredImg('');
-      setEnteredTime('');
-      setEnteredCitystate('');
-      setEnteredDate('');
-      setEnteredGuests('');
-      navigate('/');
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+        const response = await fetch('http://localhost:3001/api/items/add-item', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: enteredName,
+            image: enteredImg,
+            time: enteredTime,
+            citystate: enteredCitystate,
+            date: enteredDate,
+            guests: enteredGuests,
+            highestBid: 0,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          console.error('HTTP status:', response.status);
+          throw new Error(data.msg);
+        }
+
+        props.onAddReservation(data);
+
+        setEnteredName('');
+        setEnteredImg('');
+        setEnteredTime('');
+        setEnteredCitystate('');
+        setEnteredDate('');
+        setEnteredGuests('');
+        navigate('/');
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
     };
   
     return (
       <div className="input" class="card">
         <h1 id="lg">Post a New Listing</h1>
-        <form onSubmit={addItemHandler}>
+        <form onSubmit={handleSubmit}>
           <div class="label-input">
             <label id="rname"><h2>Restaurant Name</h2></label>
             <input
