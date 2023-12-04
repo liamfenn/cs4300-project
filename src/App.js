@@ -17,7 +17,7 @@ const restaurantList = [
     citystate: "Athens/GA",
     date: "12/20",
     guests: "2",
-    highestBid: 5.00,
+    highestBid: "5",
     canEdit: false,
 },
 {
