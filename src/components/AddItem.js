@@ -16,21 +16,32 @@ const AddItem = (props) => {
     const handleSubmit = async (e) => {
       e.preventDefault();
 
+      const item = {
+        name: enteredName,
+        image: enteredImg,
+        time: enteredTime,
+        citystate: enteredCitystate,
+        date: enteredDate,
+        guests: enteredGuests,
+        highestBid: "0"
+      }
+
       try {
         const response = await axios.post('http://localhost:3001/api/items/add-item', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            name: enteredName,
-            image: enteredImg,
-            time: enteredTime,
-            citystate: enteredCitystate,
-            date: enteredDate,
-            guests: enteredGuests,
-            highestBid: "0",
-          }),
+          body: JSON.stringify(item)
+          // body: JSON.stringify({
+          //   name: enteredName,
+          //   image: enteredImg,
+          //   time: enteredTime,
+          //   citystate: enteredCitystate,
+          //   date: enteredDate,
+          //   guests: enteredGuests,
+          //   highestBid: 0,
+          // }),
         });
 
         const data = await response.json();
